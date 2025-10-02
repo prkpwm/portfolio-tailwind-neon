@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
   isLoading = false;
   mouseX = 0;
   mouseY = 0;
+  isOpenNewJob = false;
   
   constructor(private http: HttpClient) {}
   

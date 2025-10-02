@@ -22,6 +22,11 @@ body {
   text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff, 0 0 20px #00ffff;
 }
 
+.neon-text-white {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 2px #00ffff, 0 0 5px #00ffff, 0 0 10px #00ffff;
+}
+
 .neon-border {
   border: 2px solid #00ffff;
   box-shadow: 0 0 10px #00ffff, inset 0 0 10px #00ffff;

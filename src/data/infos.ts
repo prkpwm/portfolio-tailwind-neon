@@ -2,10 +2,7 @@ export const _INFO = [
     {
       title: '_SUMMARY',
       content: `
-      passionate about cutting-edge technology and solving real-world problems, 
-      with previous experience in artificial intelligence engineer, Research and Development.
-      Skilled in Artificial Intelligence for Computer Vision. 
-      Strong coding ability both in producing clean and efficient code as well as debugging.`,
+A Senior Full-Stack Developer with 4+ years of expertise in building scalable web applications using Angular, React, and Node.js. Proven track record in developing enterprise-level solutions with modern JavaScript frameworks, RESTful APIs, and database management. Strong focus on clean code architecture, responsive design, and performance optimization. Passionate about delivering exceptional user experiences and staying current with emerging web technologies.`,
     },
     {
       title: '_RESPONSIBILITY',
