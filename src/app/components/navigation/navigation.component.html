@@ -49,7 +49,7 @@
       </div>
       
       <!-- Mobile Menu Button -->
-      <button (click)="onToggleMobileMenu()" class="md:hidden text-cyan-400 hover:text-cyan-300">
+      <button (click)="onToggleMobileMenu()" class="md:hidden text-cyan-400 hover:text-cyan-300 p-2 -m-2">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path *ngIf="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           <path *ngIf="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -58,47 +58,61 @@
     </div>
     
     <!-- Mobile Menu -->
-    <div class="mobile-menu md:hidden mt-4 pb-4 border-t border-gray-700" [class.open]="mobileMenuOpen">
-      <div class="flex flex-col space-y-4 pt-4">
+    <div id="mobile-menu" class="mobile-menu md:hidden mt-4 pb-4 border-t border-gray-700 transition-all duration-300 ease-in-out transform" 
+         [class.open]="mobileMenuOpen" 
+         [class.opacity-100]="mobileMenuOpen" 
+         [class.opacity-0]="!mobileMenuOpen"
+         [class.translate-y-0]="mobileMenuOpen" 
+         [class.-translate-y-4]="!mobileMenuOpen"
+         [class.scale-100]="mobileMenuOpen" 
+         [class.scale-95]="!mobileMenuOpen"
+         [style.display]="mobileMenuOpen ? 'block' : 'none'">
+      <div class="flex flex-col space-y-4 pt-4 transition-all duration-200 delay-100">
         <button (click)="onNavigateToSection('home')" 
-                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
-                [class.neon-text]="currentSection === 'home'">Home</button>
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left px-3 py-2 rounded nav-glow transform hover:scale-105 hover:translate-x-2"
+                [class.neon-text]="currentSection === 'home'"
+                style="animation-delay: 0.1s">Home</button>
         <button (click)="onNavigateToSection('experience')" 
-                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
-                [class.neon-text]="currentSection === 'experience'">Experience</button>
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left px-3 py-2 rounded nav-glow transform hover:scale-105 hover:translate-x-2"
+                [class.neon-text]="currentSection === 'experience'"
+                style="animation-delay: 0.2s">Experience</button>
         <button (click)="onNavigateToSection('projects')" 
-                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
-                [class.neon-text]="currentSection === 'projects'">Projects</button>
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left px-3 py-2 rounded nav-glow transform hover:scale-105 hover:translate-x-2"
+                [class.neon-text]="currentSection === 'projects'"
+                style="animation-delay: 0.3s">Projects</button>
         <button (click)="onNavigateToSection('skills')" 
-                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
-                [class.neon-text]="currentSection === 'skills'">Skills</button>
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left px-3 py-2 rounded nav-glow transform hover:scale-105 hover:translate-x-2"
+                [class.neon-text]="currentSection === 'skills'"
+                style="animation-delay: 0.4s">Skills</button>
         <button (click)="onNavigateToSection('about')" 
-                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
-                [class.neon-text]="currentSection === 'about'">About</button>
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left px-3 py-2 rounded nav-glow transform hover:scale-105 hover:translate-x-2"
+                [class.neon-text]="currentSection === 'about'"
+                style="animation-delay: 0.5s">About</button>
         <button (click)="onNavigateToSection('chat')" 
-                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
-                [class.neon-text]="currentSection === 'chat'">Chat</button>
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left px-3 py-2 rounded nav-glow transform hover:scale-105 hover:translate-x-2"
+                [class.neon-text]="currentSection === 'chat'"
+                style="animation-delay: 0.6s">Chat</button>
         
         <!-- Mobile Links Submenu -->
-        <div id="mobile-links-dropdown">
+        <div id="mobile-links-dropdown" style="animation-delay: 0.7s">
           <button (click)="onToggleMobileLinks()" 
-                  class="text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left flex items-center">
+                  class="text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left flex items-center transform hover:scale-105 hover:translate-x-2">
             Links
-            <svg class="w-4 h-4 ml-1 transition-transform" [class.rotate-180]="mobileLinksOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 ml-1 transition-transform duration-300" [class.rotate-180]="mobileLinksOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          <div *ngIf="mobileLinksOpen" class="ml-4 space-y-2">
+          <div *ngIf="mobileLinksOpen" class="ml-4 space-y-2 animate-pulse">
             <button (click)="onOpenLinkedin()" 
-               class="block text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left text-sm">
+               class="block text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left text-sm transform hover:scale-105 hover:translate-x-1">
               LinkedIn
             </button>
             <button (click)="onOpenResume()" 
-               class="block text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left text-sm">
+               class="block text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left text-sm transform hover:scale-105 hover:translate-x-1">
               Resume
             </button>
             <button (click)="onOpenGithub()" 
-               class="block text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left text-sm">
+               class="block text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left text-sm transform hover:scale-105 hover:translate-x-1">
               GitHub
             </button>
           </div>

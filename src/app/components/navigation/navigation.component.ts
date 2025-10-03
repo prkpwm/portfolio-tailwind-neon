@@ -18,8 +18,10 @@ export class NavigationComponent {
   @Output() openResume = new EventEmitter<void>();
   @Output() openGithub = new EventEmitter<void>();
   @Output() openLinkedin = new EventEmitter<void>();
+  @Output() closeMobileMenu = new EventEmitter<void>();
 
   onNavigateToSection(section: string) {
+    this.closeMobileMenu.emit();
     this.navigateToSection.emit(section);
   }
 
@@ -55,6 +57,8 @@ export class NavigationComponent {
     const target = event.target as HTMLElement;
     const dropdown = document.getElementById('links-dropdown');
     const mobileDropdown = document.getElementById('mobile-links-dropdown');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuButton = target.closest('.md\\:hidden');
     
     if (dropdown && !dropdown.contains(target)) {
       this.showLinksMenu = false;
@@ -62,6 +66,10 @@ export class NavigationComponent {
     
     if (mobileDropdown && !mobileDropdown.contains(target)) {
       this.mobileLinksOpen = false;
+    }
+    
+    if (mobileMenu && !mobileMenu.contains(target) && !mobileMenuButton) {
+      this.closeMobileMenu.emit();
     }
   }
 }
