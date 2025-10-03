@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ChatService } from './services/chat.service';
+import { ChatMessage, Project, WorkExperience, Education, Skill, Question, Info } from './interfaces/portfolio.interface';
 import { 
   _WORK_EXPERIENCE, 
   _PROJECT_LIST, 
@@ -20,30 +19,30 @@ import {
 export class AppComponent implements OnInit {
   title = 'Pakpoom Srisen - Portfolio';
   
-  workExperience = _WORK_EXPERIENCE;
-  projects = _PROJECT_LIST;
-  education = _EDUCATION_LIST;
-  languages = _LANGUAGE_LIST;
-  programs = _PROGRAMS_LIST;
-  info = _INFO;
-  questions = _QUESTIONS;
+  workExperience: WorkExperience[] = _WORK_EXPERIENCE;
+  projects: Project[] = _PROJECT_LIST;
+  education: Education[] = _EDUCATION_LIST;
+  languages: Skill[] = _LANGUAGE_LIST;
+  programs: Skill[] = _PROGRAMS_LIST;
+  info: Info[] = _INFO;
+  questions: Question[] = _QUESTIONS;
   
-  currentSection = 'home';
-  chatMessages: Array<{type: 'user' | 'bot', message: string}> = [];
-  userInput = '';
-  mobileMenuOpen = false;
-  mobileLinksOpen = false;
-  showLinksMenu = false;
-  selectedProject: any = null;
-  selectedEducation: any = null;
-  selectedWork: any = null;
-  selectedInfo: any = null;
-  isLoading = false;
-  mouseX = 0;
-  mouseY = 0;
-  isOpenNewJob = false;
+  currentSection: string = 'home';
+  chatMessages: ChatMessage[] = [];
+  userInput: string = '';
+  mobileMenuOpen: boolean = false;
+  mobileLinksOpen: boolean = false;
+  showLinksMenu: boolean = false;
+  selectedProject: Project | null = null;
+  selectedEducation: Education | null = null;
+  selectedWork: WorkExperience | null = null;
+  selectedInfo: Info | null = null;
+  isLoading: boolean = false;
+  mouseX: number = 0;
+  mouseY: number = 0;
+  isOpenNewJob: boolean = false;
   
-  constructor(private http: HttpClient) {}
+  constructor(private chatService: ChatService) {}
   
   ngOnInit() {
     this.addBotMessage('Hello! I\'m Pakpoom\'s AI assistant. Ask me anything about his experience, skills, or projects!');
@@ -66,7 +65,7 @@ export class AppComponent implements OnInit {
     this.showLinksMenu = !this.showLinksMenu;
   }
   
-  showProjectDetail(project: any) {
+  showProjectDetail(project: Project) {
     this.selectedProject = project;
   }
   
@@ -74,7 +73,7 @@ export class AppComponent implements OnInit {
     this.selectedProject = null;
   }
   
-  showEducationDetail(education: any) {
+  showEducationDetail(education: Education) {
     this.selectedEducation = education;
   }
   
@@ -82,7 +81,7 @@ export class AppComponent implements OnInit {
     this.selectedEducation = null;
   }
   
-  showWorkDetail(work: any) {
+  showWorkDetail(work: WorkExperience) {
     this.selectedWork = work;
   }
   
@@ -90,7 +89,7 @@ export class AppComponent implements OnInit {
     this.selectedWork = null;
   }
   
-  showInfoDetail(info: any) {
+  showInfoDetail(info: Info) {
     this.selectedInfo = info;
   }
   
@@ -104,14 +103,13 @@ export class AppComponent implements OnInit {
     this.chatMessages.push({ type: 'user', message: this.userInput });
     this.isLoading = true;
     
-    this.getAIResponse(this.userInput).subscribe({
+    const portfolioContext = this.buildPortfolioContext();
+    this.chatService.getAIResponse(this.userInput, portfolioContext, this.questions).subscribe({
       next: (response) => {
         this.addBotMessage(response);
         this.isLoading = false;
       },
       error: () => {
-        const fallbackResponse = this.findAnswer(this.userInput);
-        this.addBotMessage(fallbackResponse);
         this.isLoading = false;
       }
     });
@@ -119,26 +117,7 @@ export class AppComponent implements OnInit {
     this.userInput = '';
   }
   
-  private getAIResponse(question: string): Observable<string> {
-    const portfolioContext = this.buildPortfolioContext();
-    const prompt = `Context: ${portfolioContext}\n\nQuestion: ${question}\n\nAnswer as Pakpoom's AI assistant:`;
-    
-    return this.http.post<any>('https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium', {
-      inputs: prompt,
-      parameters: {
-        max_length: 150,
-        temperature: 0.7,
-        return_full_text: false
-      }
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).pipe(
-      map(response => response[0]?.generated_text || this.findAnswer(question)),
-      catchError(() => of(this.findAnswer(question)))
-    );
-  }
+
   
   private buildPortfolioContext(): string {
     return JSON.stringify({
@@ -153,57 +132,17 @@ export class AppComponent implements OnInit {
     });
   }
   
-  private findAnswer(question: string): string {
-    const lowerQuestion = question.toLowerCase();
-    let bestMatch = null;
-    let bestScore = 0;
-    
-    for (const q of this.questions) {
-      const similarity = this.calculateSimilarity(lowerQuestion, q.question.toLowerCase());
-      if (similarity > bestScore && similarity > 0.3) {
-        bestScore = similarity;
-        bestMatch = q;
-      }
-    }
-    
-    return bestMatch ? bestMatch.answer : 'I\'m not sure about that. Could you ask something else about Pakpoom\'s experience or skills?';
-  }
-  
-  private calculateSimilarity(str1: string, str2: string): number {
-    const distance = this.levenshteinDistance(str1, str2);
-    const maxLength = Math.max(str1.length, str2.length);
-    return maxLength === 0 ? 1 : 1 - distance / maxLength;
-  }
-  
-  private levenshteinDistance(str1: string, str2: string): number {
-    const matrix = Array(str2.length + 1).fill(null).map(() => Array(str1.length + 1).fill(null));
-    
-    for (let i = 0; i <= str1.length; i++) matrix[0][i] = i;
-    for (let j = 0; j <= str2.length; j++) matrix[j][0] = j;
-    
-    for (let j = 1; j <= str2.length; j++) {
-      for (let i = 1; i <= str1.length; i++) {
-        const cost = str1[i - 1] === str2[j - 1] ? 0 : 1;
-        matrix[j][i] = Math.min(
-          matrix[j][i - 1] + 1,
-          matrix[j - 1][i] + 1,
-          matrix[j - 1][i - 1] + cost
-        );
-      }
-    }
-    
-    return matrix[str2.length][str1.length];
-  }
+
   
   private addBotMessage(message: string) {
     this.chatMessages.push({ type: 'bot', message });
   }
   
-  getSkillLevel(skill: any): number {
+  getSkillLevel(skill: Skill): number {
     return skill.late || 5;
   }
   
-  get sortedProjects() {
+  get sortedProjects(): Project[] {
     return this.projects.sort((a, b) => b.order - a.order);
   }
   
