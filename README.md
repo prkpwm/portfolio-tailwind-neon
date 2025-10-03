@@ -125,7 +125,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 👨‍💻 Author
 
 **Pakpoom Srisen**
-- Portfolio: [Live Demo](https://portfolio-tailwind-neon.web.app)
+- Portfolio: [Live Demo](https://resume-prkpwm.web.app/)
 - GitHub: [@prkpwm](https://github.com/prkpwm)
 - LinkedIn: [prkpwm](https://linkedin.com/in/prkpwm)
 - Email: prkpwm.dev@gmail.com
