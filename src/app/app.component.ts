@@ -58,6 +58,14 @@ export class AppComponent implements OnInit {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
   
+  toggleMobileLinks() {
+    this.mobileLinksOpen = !this.mobileLinksOpen;
+  }
+  
+  toggleLinksMenu() {
+    this.showLinksMenu = !this.showLinksMenu;
+  }
+  
   showProjectDetail(project: any) {
     this.selectedProject = project;
   }

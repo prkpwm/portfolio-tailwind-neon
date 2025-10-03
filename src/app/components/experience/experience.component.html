@@ -1,0 +1,38 @@
+<section class="min-h-screen px-6 py-20 relative">
+  <!-- Animated Background Particles -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="section-particle" style="top: 10%; left: 25%; animation-delay: 0s;"></div>
+    <div class="section-particle" style="top: 40%; left: 80%; animation-delay: 2s;"></div>
+    <div class="section-particle" style="top: 70%; left: 20%; animation-delay: 4s;"></div>
+    <div class="section-particle" style="top: 90%; left: 70%; animation-delay: 6s;"></div>
+  </div>
+  
+  <div class="max-w-6xl mx-auto relative z-10">
+    <h2 class="text-4xl font-bold neon-text mb-12 text-center uppercase tracking-wider animate-pulse-neon">Work Experience</h2>
+    
+    <div class="space-y-8">
+      <div *ngFor="let work of workExperience" 
+           (click)="onShowWorkDetail(work)"
+           class="enhanced-card tech-card p-8 rounded-lg hover:neon-glow transition-all slide-in cursor-pointer">
+        <div class="card-glow"></div>
+        <div class="flex items-start mb-6">
+          <img [src]="work.img" [alt]="work.name" class="w-20 h-20 rounded-lg mr-6 neon-border pulse-animation">
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-cyan-400 mb-2">{{ work.name }}</h3>
+            <p class="text-gray-400 mb-2">{{ work.data }}</p>
+            <p class="text-gray-300 detail-text">{{ work.description }}</p>
+          </div>
+        </div>
+        
+        <p class="text-gray-300 leading-relaxed mb-6 detail-text">{{ work.full_description }}</p>
+        
+        <div class="flex flex-wrap gap-3">
+          <span *ngFor="let tech of work.items" class="flex items-center bg-gray-800/50 text-cyan-300 px-3 py-2 rounded-lg border border-cyan-500/30">
+            <img [src]="tech.img" [alt]="tech.name" class="w-5 h-5 mr-2">
+            {{ tech.name }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

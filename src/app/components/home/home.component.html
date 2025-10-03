@@ -1,0 +1,26 @@
+<section class="min-h-screen flex items-center justify-center px-6 relative">
+  <!-- Animated Background Particles -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="section-particle" style="top: 15%; left: 15%; animation-delay: 0s;"></div>
+    <div class="section-particle" style="top: 25%; left: 85%; animation-delay: 1s;"></div>
+    <div class="section-particle" style="top: 65%; left: 10%; animation-delay: 2s;"></div>
+    <div class="section-particle" style="top: 75%; left: 80%; animation-delay: 3s;"></div>
+    <div class="section-particle" style="top: 45%; left: 90%; animation-delay: 4s;"></div>
+  </div>
+  
+  <div class="text-center fade-in relative z-10">
+    <h1 class="text-6xl md:text-8xl font-black neon-text mb-6 tracking-wider">PAKPOOM</h1>
+    <h2 class="text-3xl md:text-4xl text-white mb-4 tracking-widest">SRISEN</h2>
+    <p class="text-xl text-cyan-300 mb-8 uppercase tracking-wider pulse-animation">Full-Stack Developer</p>
+    <div class="mb-8" *ngIf="false">
+      <span *ngIf="isOpenNewJob" class="px-2 py-1 text-xs bg-green-500/20 text-green-400 border border-green-500/30 rounded-full uppercase tracking-wider animate-pulse">Open</span>
+      <span *ngIf="!isOpenNewJob" class="px-2 py-1 text-xs bg-red-500/20 text-red-400 border border-red-500/30 rounded-full uppercase tracking-wider">Closed</span>
+    </div>
+    <div class="text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed detail-text enhanced-card p-6 rounded-lg">
+      {{ info[0]?.content }}
+    </div>
+    <button (click)="onNavigateToSection('about')" class="cyber-button enhanced-button">
+      EXPLORE MY WORK
+    </button>
+  </div>
+</section>

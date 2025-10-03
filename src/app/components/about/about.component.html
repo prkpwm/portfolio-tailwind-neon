@@ -1,0 +1,58 @@
+<section class="min-h-screen px-6 py-20 relative">
+  <!-- Animated Background Particles -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="section-particle" style="top: 20%; left: 20%; animation-delay: 0s;"></div>
+    <div class="section-particle" style="top: 30%; left: 75%; animation-delay: 1.5s;"></div>
+    <div class="section-particle" style="top: 70%; left: 15%; animation-delay: 3s;"></div>
+    <div class="section-particle" style="top: 80%; left: 85%; animation-delay: 4.5s;"></div>
+  </div>
+  
+  <div class="max-w-6xl mx-auto relative z-10">
+    <h2 class="text-4xl font-bold neon-text mb-12 text-center uppercase tracking-wider animate-pulse-neon">About Me</h2>
+    
+    <div class="grid md:grid-cols-2 gap-12">
+      <div (click)="onShowInfoDetail(info[0])" class="enhanced-card tech-card p-8 rounded-lg slide-in hover:neon-glow transition-all cursor-pointer">
+        <div class="card-glow"></div>
+        <h3 class="text-2xl font-bold text-cyan-400 mb-6">{{ info[0]?.title }}</h3>
+        <p class="text-gray-300 leading-relaxed mb-6 detail-text">{{ info[0]?.content }}</p>
+      </div>
+      
+      <div (click)="onShowInfoDetail(info[2])" class="enhanced-card tech-card p-8 rounded-lg slide-in hover:neon-glow transition-all cursor-pointer">
+        <div class="card-glow"></div>
+        <h3 class="text-2xl font-bold text-cyan-400 mb-6">{{ info[2]?.title }}</h3>
+        <div class="text-gray-300 whitespace-pre-line detail-text">{{ info[2]?.content }}</div>
+      </div>
+    </div>
+    
+    <div (click)="onShowInfoDetail(info[1])" class="mt-12 enhanced-card tech-card p-8 rounded-lg fade-in hover:neon-glow transition-all cursor-pointer">
+      <div class="card-glow"></div>
+      <h3 class="text-2xl font-bold text-cyan-400 mb-6">{{ info[1]?.title }}</h3>
+      <p class="text-gray-300 leading-relaxed detail-text">{{ info[1]?.content }}</p>
+    </div>
+    
+    <!-- Education -->
+    <div class="mt-12">
+      <h3 class="text-3xl font-bold neon-text mb-8 text-center uppercase tracking-wider">Education</h3>
+      <div class="space-y-6">
+        <div *ngFor="let edu of education" 
+             (click)="onShowEducationDetail(edu)"
+             class="enhanced-card tech-card p-6 rounded-lg hover:neon-glow transition-all cursor-pointer">
+          <div class="card-glow"></div>
+          <div class="flex items-center mb-4">
+            <img [src]="edu.img" [alt]="edu.name" class="w-16 h-16 rounded-full mr-4 neon-border pulse-animation">
+            <div>
+              <h4 class="text-xl font-bold text-cyan-400">{{ edu.name }}</h4>
+              <p class="text-gray-400">{{ edu.date }}</p>
+            </div>
+          </div>
+          <p class="text-gray-300 detail-text">{{ edu.description }}</p>
+          <div *ngIf="edu.items" class="mt-4">
+            <span *ngFor="let item of edu.items" class="inline-block bg-cyan-900/30 text-cyan-300 px-3 py-1 rounded-full text-sm mr-2">
+              {{ item.name }}: {{ item.number }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

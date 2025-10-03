@@ -1,0 +1,107 @@
+<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-sm neon-border border-t-0 border-l-0 border-r-0">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <h1 class="text-2xl font-bold neon-text pulse-animation">PAKPOOM.DEV</h1>
+      </div>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8 items-center">
+        <button (click)="navigateToSection('home')"
+                class="nav-item nav-button text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider px-3 py-2 rounded"
+                [class.neon-text]="currentSection === 'home'">Home</button>
+        <button (click)="navigateToSection('experience')"
+                class="nav-item nav-button text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider px-3 py-2 rounded"
+                [class.neon-text]="currentSection === 'experience'">Experience</button>
+        <button (click)="navigateToSection('projects')"
+                class="nav-item nav-button text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider px-3 py-2 rounded"
+                [class.neon-text]="currentSection === 'projects'">Projects</button>
+        <button (click)="navigateToSection('skills')"
+                class="nav-item nav-button text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider px-3 py-2 rounded"
+                [class.neon-text]="currentSection === 'skills'">Skills</button>
+        <button (click)="navigateToSection('about')"
+                class="nav-item nav-button text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider px-3 py-2 rounded"
+                [class.neon-text]="currentSection === 'about'">About</button>
+        <button (click)="navigateToSection('chat')"
+                class="nav-item nav-button text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider px-3 py-2 rounded"
+                [class.neon-text]="currentSection === 'chat'">Chat</button>
+        
+        <!-- Links Dropdown -->
+        <div class="relative">
+          <button (click)="onToggleLinksMenu()" class="nav-item nav-button text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider flex items-center px-3 py-2 rounded nav-glow">
+            Links
+            <svg class="w-4 h-4 ml-1 transition-transform duration-300" [class.rotate-180]="showLinksMenu" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="dropdown-menu absolute top-full right-0 mt-2 w-40 bg-gray-900/95 border border-cyan-500/30 rounded-lg shadow-lg z-50" [class.show]="showLinksMenu">
+            <button (click)="onOpenResume()" class="dropdown-item w-full text-left px-4 py-3 text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-sm flex items-center">
+              <span class="mr-3 text-lg">📄</span>Resume
+            </button>
+            <button (click)="onOpenGithub()" class="dropdown-item w-full text-left px-4 py-3 text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-sm flex items-center">
+              <span class="mr-3 text-lg">💻</span>GitHub
+            </button>
+            <button (click)="onOpenLinkedin()" class="dropdown-item w-full text-left px-4 py-3 text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-sm flex items-center">
+              <span class="mr-3 text-lg">💼</span>LinkedIn
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button (click)="onToggleMobileMenu()" class="md:hidden text-cyan-400 hover:text-cyan-300">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path *ngIf="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          <path *ngIf="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu md:hidden mt-4 pb-4 border-t border-gray-700" [class.open]="mobileMenuOpen">
+      <div class="flex flex-col space-y-4 pt-4">
+        <button (click)="navigateToSection('home')" 
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
+                [class.neon-text]="currentSection === 'home'">Home</button>
+        <button (click)="navigateToSection('experience')" 
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
+                [class.neon-text]="currentSection === 'experience'">Experience</button>
+        <button (click)="navigateToSection('projects')" 
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
+                [class.neon-text]="currentSection === 'projects'">Projects</button>
+        <button (click)="navigateToSection('skills')" 
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
+                [class.neon-text]="currentSection === 'skills'">Skills</button>
+        <button (click)="navigateToSection('about')" 
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
+                [class.neon-text]="currentSection === 'about'">About</button>
+        <button (click)="navigateToSection('chat')" 
+                class="mobile-nav-item text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left px-3 py-2 rounded nav-glow"
+                [class.neon-text]="currentSection === 'chat'">Chat</button>
+        
+        <!-- Mobile Links Submenu -->
+        <button (click)="onToggleMobileLinks()" 
+                class="text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left flex items-center">
+          Links
+          <svg class="w-4 h-4 ml-1 transition-transform" [class.rotate-180]="mobileLinksOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="mobileLinksOpen" class="ml-4 space-y-2">
+          <button (click)="onOpenLinkedin()" 
+             class="block text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left text-sm">
+            LinkedIn
+          </button>
+          <button (click)="onOpenResume()" 
+             class="block text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left text-sm">
+            Resume
+          </button>
+          <button (click)="onOpenGithub()" 
+             class="block text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-wider text-left text-sm">
+            GitHub
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

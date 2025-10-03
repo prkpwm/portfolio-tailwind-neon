@@ -1,0 +1,55 @@
+<section class="min-h-screen px-6 py-20 relative">
+  <!-- Animated Background Particles -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="section-particle" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+    <div class="section-particle" style="top: 40%; left: 85%; animation-delay: 1.5s;"></div>
+    <div class="section-particle" style="top: 60%; left: 10%; animation-delay: 3s;"></div>
+    <div class="section-particle" style="top: 80%; left: 80%; animation-delay: 4.5s;"></div>
+  </div>
+  
+  <div class="max-w-6xl mx-auto relative z-10">
+    <h2 class="text-4xl font-bold neon-text mb-12 text-center uppercase tracking-wider animate-pulse-neon">Skills</h2>
+    
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Programming Languages -->
+      <div class="enhanced-card tech-card p-8 rounded-lg hover:neon-glow transition-all">
+        <div class="card-glow"></div>
+        <h3 class="text-2xl font-bold text-cyan-400 mb-6">Programming Languages</h3>
+        <div class="space-y-4">
+          <div *ngFor="let lang of languages" class="flex items-center justify-between">
+            <div class="flex items-center">
+              <img [src]="lang.img" [alt]="lang.name" class="w-8 h-8 mr-3">
+              <span class="text-white">{{ lang.name }}</span>
+            </div>
+            <div class="flex-1 mx-4">
+              <div class="skill-bar">
+                <div class="skill-progress" [style.width.%]="getSkillLevel(lang) * 10"></div>
+              </div>
+            </div>
+            <span class="text-cyan-400 text-sm">{{ getSkillLevel(lang) }}/10</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tools & Technologies -->
+      <div class="enhanced-card tech-card p-8 rounded-lg hover:neon-glow transition-all">
+        <div class="card-glow"></div>
+        <h3 class="text-2xl font-bold text-cyan-400 mb-6">Tools & Technologies</h3>
+        <div class="space-y-4">
+          <div *ngFor="let prog of programs" class="flex items-center justify-between">
+            <div class="flex items-center">
+              <img [src]="prog.img" [alt]="prog.name" class="w-8 h-8 mr-3">
+              <span class="text-white">{{ prog.name }}</span>
+            </div>
+            <div class="flex-1 mx-4">
+              <div class="skill-bar">
+                <div class="skill-progress" [style.width.%]="getSkillLevel(prog) * 10"></div>
+              </div>
+            </div>
+            <span class="text-cyan-400 text-sm">{{ getSkillLevel(prog) }}/10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

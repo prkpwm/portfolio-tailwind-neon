@@ -1,0 +1,29 @@
+<div *ngIf="selectedEducation" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-sm">
+  <div class="tech-card w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto rounded-lg p-4 sm:p-6 md:p-8 relative mx-2 sm:mx-4">
+    <button (click)="onCloseModal()" class="absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-400 hover:text-cyan-400 text-xl sm:text-2xl z-10 bg-gray-800/80 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
+      ×
+    </button>
+    
+    <div class="flex flex-col sm:flex-row items-start sm:items-center mb-4 sm:mb-6 pr-8 sm:pr-0">
+      <img [src]="selectedEducation.img" [alt]="selectedEducation.name" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-0 sm:mr-4 mb-3 sm:mb-0">
+      <div class="flex-1">
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-cyan-400 leading-tight">{{ selectedEducation.name }}</h2>
+        <p class="text-gray-400 text-sm sm:text-base mt-1">{{ selectedEducation.date }}</p>
+      </div>
+    </div>
+    
+    <div class="mb-4 sm:mb-6">
+      <h3 class="text-lg sm:text-xl font-bold text-cyan-400 mb-2 sm:mb-3">Description</h3>
+      <p class="text-gray-300 leading-relaxed detail-text text-sm sm:text-base">{{ selectedEducation.full_description }}</p>
+    </div>
+    
+    <div class="mb-4 sm:mb-6" *ngIf="selectedEducation.items">
+      <h3 class="text-lg sm:text-xl font-bold text-cyan-400 mb-2 sm:mb-3">Academic Performance</h3>
+      <div class="flex flex-wrap gap-2 sm:gap-3">
+        <span *ngFor="let item of selectedEducation.items" class="bg-cyan-900/30 text-cyan-300 px-3 py-2 rounded-full text-sm">
+          {{ item.name }}: {{ item.number }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
