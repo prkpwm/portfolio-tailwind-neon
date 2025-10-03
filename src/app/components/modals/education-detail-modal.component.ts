@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-education-detail-modal',
   templateUrl: './education-detail-modal.component.html',
-  styleUrls: ['./education-detail-modal.component.css']
+  styleUrls: ['./education-detail-modal.component.scss']
 })
 export class EducationDetailModalComponent {
   @Input() selectedEducation: any = null;

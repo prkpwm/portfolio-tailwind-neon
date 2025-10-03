@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-project-detail-modal',
   templateUrl: './project-detail-modal.component.html',
-  styleUrls: ['./project-detail-modal.component.css']
+  styleUrls: ['./project-detail-modal.component.scss']
 })
 export class ProjectDetailModalComponent {
   @Input() selectedProject: any = null;
