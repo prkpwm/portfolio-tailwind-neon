@@ -16,6 +16,7 @@ import { InfoDetailModalComponent } from './components/modals/info-detail-modal.
 import { SkillsComponent } from './components/skills/skills.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     InfoDetailModalComponent,
     SkillsComponent,
     ChatComponent,
-    NavigationComponent
+    NavigationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

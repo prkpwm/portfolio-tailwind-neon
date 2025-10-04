@@ -11,7 +11,7 @@
     <h2 class="text-4xl font-bold neon-text mb-12 text-center uppercase tracking-wider animate-pulse-neon">Work Experience</h2>
     
     <div class="space-y-8">
-      <div *ngFor="let work of workExperience" 
+      <div *ngFor="let work of workExperience; let i = index" 
            (click)="onShowWorkDetail(work)"
            class="enhanced-card tech-card p-8 rounded-lg hover:neon-glow transition-all slide-in cursor-pointer">
         <div class="card-glow"></div>
