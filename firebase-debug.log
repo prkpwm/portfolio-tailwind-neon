@@ -1,0 +1,16 @@
+[debug] [2025-10-04T08:05:58.589Z] ----------------------------------------------------------------------
+[debug] [2025-10-04T08:05:58.591Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\acer\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2025-10-04T08:05:58.591Z] CLI Version:   14.17.0
+[debug] [2025-10-04T08:05:58.592Z] Platform:      win32
+[debug] [2025-10-04T08:05:58.592Z] Node Version:  v22.14.0
+[debug] [2025-10-04T08:05:58.592Z] Time:          Sat Oct 04 2025 15:05:58 GMT+0700 (เวลาอินโดจีน)
+[debug] [2025-10-04T08:05:58.592Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-10-04T08:05:58.759Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-04T08:05:58.759Z] > authorizing via signed-in user (prkpwm.dev@gmail.com)
+[debug] [2025-10-04T08:05:58.760Z] [iam] checking project resume-prkpwm-v2 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-10-04T08:05:58.761Z] Checked if tokens are valid: true, expires at: 1759568236453
+[debug] [2025-10-04T08:05:58.761Z] Checked if tokens are valid: true, expires at: 1759568236453
+[debug] [2025-10-04T08:05:58.761Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/resume-prkpwm-v2:testIamPermissions [none]
+[debug] [2025-10-04T08:05:58.762Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/resume-prkpwm-v2:testIamPermissions x-goog-quota-user=projects/resume-prkpwm-v2
+[debug] [2025-10-04T08:05:58.762Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/resume-prkpwm-v2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
