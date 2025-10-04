@@ -99,7 +99,8 @@
           </div>
           <button (click)="onSendMessage()" 
                   [disabled]="isLoading" 
-                  class="send-button cyber-button px-6 py-3 disabled:opacity-50 relative overflow-hidden">
+                  class="send-button cyber-button px-6 py-3 disabled:opacity-50 relative overflow-hidden"
+                  aria-label="Send message">
             <span *ngIf="!isLoading" class="flex items-center space-x-2">
               <span>Send</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
