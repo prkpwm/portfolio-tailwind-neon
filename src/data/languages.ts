@@ -1,23 +1,12 @@
 import { _MAP_ASSETS } from './assets';
 
 export const _LANGUAGE_LIST = [
+    // Current Job Stack - Frontend
     {
         name: 'Angular',
         icon: 'language',
         img: _MAP_ASSETS['Angular'],
         late: 10,
-    },
-    {
-        name: 'React',
-        icon: 'language',
-        img: _MAP_ASSETS['React'],
-        late: 7,
-    },
-    {
-        name: 'JavaScript',
-        icon: 'language',
-        img: _MAP_ASSETS['Javascript'],
-        late: 9,
     },
     {
         name: 'TypeScript',
@@ -26,10 +15,42 @@ export const _LANGUAGE_LIST = [
         late: 10,
     },
     {
+        name: 'JavaScript',
+        icon: 'language',
+        img: _MAP_ASSETS['Javascript'],
+        late: 9,
+    },
+    {
+        name: 'CSS',
+        icon: 'language',
+        img: _MAP_ASSETS['CSS'],
+        late: 9,
+    },
+    {
+        name: 'TailwindCSS',
+        icon: 'language',
+        img: _MAP_ASSETS['Tailwind'],
+        late: 8,
+    },
+    
+    // Current Job Stack - Backend
+    {
+        name: 'Go',
+        icon: 'language',
+        img: _MAP_ASSETS['Go'],
+        late: 8,
+    },
+    {
         name: 'Node',
         icon: 'language',
         img: _MAP_ASSETS['NodeJS'],
         late: 7,
+    },
+    {
+        name: 'NestJs',
+        icon: 'language',
+        img: _MAP_ASSETS['Nest'],
+        late: 8,
     },
     {
         name: 'Python',
@@ -37,6 +58,21 @@ export const _LANGUAGE_LIST = [
         img: _MAP_ASSETS['Python'],
         late: 8,
     },
+    
+    // Other Frontend Frameworks
+    {
+        name: 'React',
+        icon: 'language',
+        img: _MAP_ASSETS['React'],
+        late: 7,
+    },
+    {
+        name: 'EJS',
+        img: _MAP_ASSETS['EJS'],
+        late: 7,
+    },
+    
+    // Other Programming Languages
     {
         name: 'Scala',
         icon: 'language',
@@ -67,24 +103,8 @@ export const _LANGUAGE_LIST = [
         img: _MAP_ASSETS['PHP'],
         late: 6,
     },
-    {
-        name: 'CSS',
-        icon: 'language',
-        img: _MAP_ASSETS['CSS'],
-        late: 9,
-    },
-    {
-        name: 'EJS',
-        img: _MAP_ASSETS['EJS'],
-        late: 7,
-    },
-    {
-        name: 'Go',
-        icon: 'language',
-        img: _MAP_ASSETS['Go'],
-        late: 6,
-    },
-
+    
+    // Languages
     {
         name: 'English',
         icon: 'language',

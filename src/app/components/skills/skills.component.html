@@ -26,7 +26,7 @@
                 <div class="skill-progress" [style.width.%]="getSkillLevel(lang) * 10"></div>
               </div>
             </div>
-            <span class="text-cyan-400 text-sm">{{ getSkillLevel(lang) }}/10</span>
+            <span class="text-cyan-400 text-sm">{{ getSkillLevelText(lang) }}</span>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
                 <div class="skill-progress" [style.width.%]="getSkillLevel(prog) * 10"></div>
               </div>
             </div>
-            <span class="text-cyan-400 text-sm">{{ getSkillLevel(prog) }}/10</span>
+            <span class="text-cyan-400 text-sm">{{ getSkillLevelText(prog) }}</span>
           </div>
         </div>
       </div>

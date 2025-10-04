@@ -12,4 +12,13 @@ export class SkillsComponent {
   getSkillLevel(skill: any): number {
     return skill.late || 5;
   }
+
+  getSkillLevelText(skill: any): string {
+    const level = this.getSkillLevel(skill);
+    if (level >= 9) return 'Expert';
+    if (level >= 7) return 'Good';
+    if (level >= 5) return 'Medium';
+    if (level >= 3) return 'Basic';
+    return 'Beginner';
+  }
 }

@@ -2,10 +2,70 @@ import { _MAP_ASSETS } from './assets';
 
 export const _WORK_EXPERIENCE = [
     {
+        order: 5,
+        name: 'Senior Full-Stack Developer',
+        data: ` 05/2025 - Present`,
+        description: `True Corporation Public Co., Ltd. - Bangkok, Thailand (05/2025 - Present)`,
+        full_description: `
+            Responsible for designing, developing, and maintaining web applications using Golang for the back-end and AngularJS, Angular 18-19 for the front-end. 
+            Builds and optimizes RESTful APIs and WebSockets to support high-performance applications. 
+            Develops and manages databases using PostgreSQL, MySQL, and MongoDB, ensuring efficient data storage and retrieval. 
+            Collaborates with DevOps teams to deploy and manage applications using Docker, Kubernetes, and CI/CD pipelines. 
+            Participates in the full Agile/Scrum development process, from sprint planning to code reviews.
+            `,
+        img: _MAP_ASSETS['True'],
+        items: [
+            {
+                name: 'Angular',
+                img: _MAP_ASSETS['Angular'],
+            },
+            {
+                name: 'AngularJS',
+                img: _MAP_ASSETS['AngularJS'],
+            },
+            {
+                name: 'Tailwind',
+                img: _MAP_ASSETS['Tailwind'],
+            },
+            {
+                name: 'Go',
+                img: _MAP_ASSETS['Go'],
+            },
+            {
+                name: 'NodeJS',
+                img: _MAP_ASSETS['NodeJS'],
+            },
+            {
+                name: 'Jenkins',
+                img: _MAP_ASSETS['Jenkins'],
+            },
+            {
+                name: 'PostgreSQL',
+                img: _MAP_ASSETS['PostgreSQL'],
+            },
+            {
+                name: 'Mysql',
+                img: _MAP_ASSETS['Mysql'],
+            },
+            {
+                name: 'MongoDB',
+                img: _MAP_ASSETS['MongoDB'],
+            },
+            {
+                name: 'Docker',
+                img: _MAP_ASSETS['Docker'],
+            },
+            {
+                name: 'Kubernetes',
+                img: _MAP_ASSETS['Kubernetes'],
+            },
+        ],
+    },
+    {
         order: 4,
-        name: 'Full-Stack Developer',
-        data: ` 05/2023 - Present`,
-        description: `Tisco Financial Group Public Company Limited - Bangkok, Thailand (05/2023 - Present)`,
+        name: 'Middle Full-Stack Developer',
+        data: ` 05/2023 - 04/2025`,
+        description: `Tisco Financial Group Public Company Limited - Bangkok, Thailand (05/2023 - 04/2025)`,
         full_description: `
             Responsible for developing a high-quality software application with Angular 14-15, 
             Typescript, HTML5, CSS3 for the frontend, NodeJS and Scala for the backend, 
@@ -21,6 +81,10 @@ export const _WORK_EXPERIENCE = [
             {
                 name: 'Javascript',
                 img: _MAP_ASSETS['Javascript'],
+            },
+            {
+                name: 'Tailwind',
+                img: _MAP_ASSETS['Tailwind'],
             },
             {
                 name: 'Mysql',
@@ -54,9 +118,9 @@ export const _WORK_EXPERIENCE = [
     },
     {
         order: 3,
-        name: 'Full-Stack Developer',
-        data: ` 12/2021 - Present`,
-        description: `ITOPPLUS Co.,Ltd. - Bangkok, Thailand (12/2021 - Present)`,
+        name: 'Middle Full-Stack Developer',
+        data: ` 12/2021 - 04/2023`,
+        description: `ITOPPLUS Co.,Ltd. - Bangkok, Thailand (12/2021 - 04/2023)`,
         full_description: `
             A Full-Stack Developer creating web applications using modern technologies. 
             Skilled in optimizing applications and architecture for maximum concurrency and 
@@ -81,6 +145,10 @@ export const _WORK_EXPERIENCE = [
             {
                 name: 'Javascript',
                 img: _MAP_ASSETS['Javascript'],
+            }, 
+            {
+                name: 'Tailwind',
+                img: _MAP_ASSETS['Tailwind'],
             },
             {
                 name: 'Mysql',
