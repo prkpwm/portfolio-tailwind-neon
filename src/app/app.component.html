@@ -39,7 +39,8 @@
                   (closeMobileMenu)="mobileMenuOpen = false"
                   (openResume)="openResume()"
                   (openGithub)="openGithub()"
-                  (openLinkedin)="openLinkedin()">
+                  (openLinkedin)="openLinkedin()"
+                  >
   </app-navigation>
 
   <!-- Main Content -->
@@ -73,25 +74,7 @@
                  >
     </app-projects>
     
-    <!-- Project Detail Modal -->
-    <app-project-detail-modal [selectedProject]="selectedProject"
-                              (closeModal)="closeProjectDetail()">
-    </app-project-detail-modal>
-    
-    <!-- Education Detail Modal -->
-    <app-education-detail-modal [selectedEducation]="selectedEducation"
-                                (closeModal)="closeEducationDetail()">
-    </app-education-detail-modal>
-    
-    <!-- Work Detail Modal -->
-    <app-work-detail-modal [selectedWork]="selectedWork"
-                           (closeModal)="closeWorkDetail()">
-    </app-work-detail-modal>
-    
-    <!-- Info Detail Modal -->
-    <app-info-detail-modal [selectedInfo]="selectedInfo"
-                           (closeModal)="closeInfoDetail()">
-    </app-info-detail-modal>
+
 
     <!-- Skills Section -->
     <app-skills *ngIf="currentSection === 'skills'"
@@ -112,6 +95,25 @@
   
   <!-- Footer -->
   <app-footer></app-footer>
+  
+  <!-- Modals - Outside main content with higher z-index -->
+  <div class="relative z-[70]">
+    <app-project-detail-modal [selectedProject]="selectedProject"
+                              (closeModal)="closeProjectDetail()">
+    </app-project-detail-modal>
+    
+    <app-education-detail-modal [selectedEducation]="selectedEducation"
+                                (closeModal)="closeEducationDetail()">
+    </app-education-detail-modal>
+    
+    <app-work-detail-modal [selectedWork]="selectedWork"
+                           (closeModal)="closeWorkDetail()">
+    </app-work-detail-modal>
+    
+    <app-info-detail-modal [selectedInfo]="selectedInfo"
+                           (closeModal)="closeInfoDetail()">
+    </app-info-detail-modal>
+  </div>
 </div>
 
 <router-outlet></router-outlet>
