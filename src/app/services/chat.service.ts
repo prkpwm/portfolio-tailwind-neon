@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { API_CONFIG } from '../config/api.config';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ChatService {
   getAIResponse(question: string, portfolioContext: string, questions: any[]): Observable<string> {
     const prompt = `Context: ${portfolioContext}\n\nQuestion: ${question}\n\nAnswer as Pakpoom's AI assistant:`;
     
-    return this.http.post<any>('https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium', {
+    return this.http.post<any>(API_CONFIG.HUGGINGFACE.API_URL, {
       inputs: prompt,
       parameters: {
         max_length: 150,

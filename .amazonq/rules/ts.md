@@ -1,0 +1,1 @@
+interface must in model file
