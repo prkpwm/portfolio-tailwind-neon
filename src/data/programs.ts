@@ -1,15 +1,8 @@
 import { _MAP_ASSETS } from './assets';
 
 export const _PROGRAMS_LIST = [
-    // Development Tools
-    { name: 'Git', icon: 'code', img: _MAP_ASSETS['Git'], late: 9 },
-    {
-        name: 'Visual Studio Code',
-        icon: 'code',
-        img: _MAP_ASSETS['Visual Studio Code'],
-        late: 9,
-    },
-    
+
+
     // Databases
     {
         name: 'MySQL',
@@ -29,23 +22,10 @@ export const _PROGRAMS_LIST = [
         img: _MAP_ASSETS['MongoDB'],
         late: 6,
     },
-    
-    // APIs & Backend
-    {
-        name: 'GraphQL',
-        icon: 'code',
-        img: _MAP_ASSETS['GraphQL'],
-        late: 8,
-    },
-    {
-        name: 'FastAPI',
-        icon: 'code',
-        img: _MAP_ASSETS['FastAPI'],
-        late: 7,
-    },
-    
+
+
+
     // Cloud & DevOps
-    { name: 'AWS', icon: 'code', img: _MAP_ASSETS['AWS'], late: 6 },
     { name: 'Docker', icon: 'code', img: _MAP_ASSETS['Docker'], late: 7 },
     {
         name: 'Kubernetes',
@@ -59,7 +39,41 @@ export const _PROGRAMS_LIST = [
         img: _MAP_ASSETS['Jenkins'],
         late: 7,
     },
-    
+    { name: 'AWS', icon: 'code', img: _MAP_ASSETS['AWS'], late: 6 },
+
+
+    // APIs & Backend
+
+    // Testing & Monitoring
+
+    {
+        name: 'Splunk',
+        icon: 'language',
+        img: _MAP_ASSETS['Splunk'],
+        late: 7,
+    },
+    {
+        name: 'RunDeck',
+        icon: 'language',
+        img: _MAP_ASSETS['RunDeck'],
+        late: 7,
+    },
+    // Development Tools
+    { name: 'Git', icon: 'code', img: _MAP_ASSETS['Git'], late: 9 },
+    {
+        name: 'Visual Studio Code',
+        icon: 'code',
+        img: _MAP_ASSETS['Visual Studio Code'],
+        late: 9,
+    },
+    // LINE
+    {
+        name: 'Line Noti',
+        icon: 'code',
+        img: _MAP_ASSETS['LINE'],
+        late: 9,
+    },
+
     // Operating Systems
     {
         name: 'Windows',
@@ -79,27 +93,7 @@ export const _PROGRAMS_LIST = [
         img: _MAP_ASSETS['Unix'],
         late: 7,
     },
-    
-    // Testing & Monitoring
-    {
-        name: 'Robot Framework',
-        icon: 'code',
-        img: _MAP_ASSETS['Robot Framework'],
-        late: 7,
-    },
-    {
-        name: 'Splunk',
-        icon: 'language',
-        img: _MAP_ASSETS['Splunk'],
-        late: 7,
-    },
-    {
-        name: 'RunDeck',
-        icon: 'language',
-        img: _MAP_ASSETS['RunDeck'],
-        late: 7,
-    },
-    
+
     // Other Tools
     { name: 'Vim', icon: 'code', img: _MAP_ASSETS['Vim'], late: 6 },
     {

@@ -32,7 +32,7 @@ export const _LANGUAGE_LIST = [
         img: _MAP_ASSETS['Tailwind'],
         late: 8,
     },
-    
+
     // Current Job Stack - Backend
     {
         name: 'Go',
@@ -58,7 +58,13 @@ export const _LANGUAGE_LIST = [
         img: _MAP_ASSETS['Python'],
         late: 8,
     },
-    
+    {
+        name: 'Robot Framework',
+        icon: 'code',
+        img: _MAP_ASSETS['Robot Framework'],
+        late: 9,
+    },
+
     // Other Frontend Frameworks
     {
         name: 'React',
@@ -71,7 +77,7 @@ export const _LANGUAGE_LIST = [
         img: _MAP_ASSETS['EJS'],
         late: 7,
     },
-    
+
     // Other Programming Languages
     {
         name: 'Scala',
@@ -103,7 +109,19 @@ export const _LANGUAGE_LIST = [
         img: _MAP_ASSETS['PHP'],
         late: 6,
     },
-    
+    {
+        name: 'GraphQL',
+        icon: 'code',
+        img: _MAP_ASSETS['GraphQL'],
+        late: 8,
+    },
+    {
+        name: 'FastAPI',
+        icon: 'code',
+        img: _MAP_ASSETS['FastAPI'],
+        late: 7,
+    },
+
     // Languages
     {
         name: 'English',
