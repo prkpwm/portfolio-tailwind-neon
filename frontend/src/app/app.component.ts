@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
+import { switchMap, catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { ChatService } from './services/chat.service';
 import { LocationService } from './services/location.service';
@@ -16,9 +19,41 @@ import {
   _INFO,
   _QUESTIONS
 } from '../data';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { SkillsComponent } from './components/skills/skills.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ResumeTemplateComponent } from './components/resume-template/resume-template.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ProjectDetailModalComponent } from './components/modals/project-detail-modal/project-detail-modal.component';
+import { EducationDetailModalComponent } from './components/modals/education-detail-modal/education-detail-modal.component';
+import { WorkDetailModalComponent } from './components/modals/work-detail-modal/work-detail-modal.component';
+import { InfoDetailModalComponent } from './components/modals/info-detail-modal/info-detail-modal.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterOutlet,
+    NavigationComponent,
+    HomeComponent,
+    AboutComponent,
+    ExperienceComponent,
+    ProjectsComponent,
+    SkillsComponent,
+    ChatComponent,
+    ResumeTemplateComponent,
+    FooterComponent,
+    ProjectDetailModalComponent,
+    EducationDetailModalComponent,
+    WorkDetailModalComponent,
+    InfoDetailModalComponent
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

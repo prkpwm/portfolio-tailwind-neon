@@ -20,7 +20,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ResumeTemplateComponent } from './components/resume-template/resume-template.component';
 
 @NgModule({
-  declarations: [
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
     AppComponent,
     HomeComponent,
     ProjectsComponent,
@@ -35,12 +39,6 @@ import { ResumeTemplateComponent } from './components/resume-template/resume-tem
     NavigationComponent,
     FooterComponent,
     ResumeTemplateComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

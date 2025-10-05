@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { WorkExperience, Education, Skill, Info } from '../../interfaces/portfolio.interface';
 import {
   _WORK_EXPERIENCE,
@@ -10,6 +11,8 @@ import {
 
 @Component({
   selector: 'app-resume-template',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './resume-template.component.html',
   styleUrls: ['./resume-template.component.css']
 })
