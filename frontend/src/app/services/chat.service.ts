@@ -1,34 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import { API_CONFIG } from '../config/api.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getAIResponse(question: string, portfolioContext: string, questions: any[]): Observable<string> {
-    const prompt = `Context: ${portfolioContext}\n\nQuestion: ${question}\n\nAnswer as Pakpoom's AI assistant:`;
-    
-    return this.http.post<any>(API_CONFIG.HUGGINGFACE.API_URL, {
-      inputs: prompt,
-      parameters: {
-        max_length: 150,
-        temperature: 0.7,
-        return_full_text: false
-      }
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).pipe(
-      map(response => response[0]?.generated_text || this.findAnswer(question, questions)),
-      catchError(() => of(this.findAnswer(question, questions)))
-    );
+    // Use local question matching instead of external AI API
+    return of(this.findAnswer(question, questions));
   }
 
   private findAnswer(question: string, questions: any[]): string {
