@@ -9,11 +9,16 @@ import { API_CONFIG } from '../config/api.config';
 })
 export class LocationService {
   private readonly API_TOKEN = API_CONFIG.IPINFO.TOKEN;
+  private locationRequest: Observable<LocationData> | null = null;
 
   constructor(private http: HttpClient) {}
 
   getUserLocation(): Observable<LocationData> {
-    return new Observable(observer => {
+    if (this.locationRequest) {
+      return this.locationRequest;
+    }
+
+    this.locationRequest = new Observable(observer => {
       this.http.get(`${API_CONFIG.IPINFO.API_URL}?token=${this.API_TOKEN}`).subscribe({
         next: (data: any) => {
           if (data.loc) {
@@ -36,9 +41,12 @@ export class LocationService {
           }
         },
         error: (error) => {
+          this.locationRequest = null;
           observer.error(error);
         }
       });
     });
+
+    return this.locationRequest;
   }
 }

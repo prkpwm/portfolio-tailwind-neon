@@ -69,23 +69,21 @@ export class AppComponent implements OnInit {
   }
 
   private getLocationFromIP() {
-    const emailSent = this.cookieService.getCookie('locationEmailSent');
-    if (emailSent) {
+    const locationSent = this.cookieService.getCookie('locationSent');
+    if (locationSent) {
       return;
     }
 
     this.locationService.getUserLocation().pipe(
-      map(location => {
-        return location;
-      }),
-      switchMap(location => this.emailService.sendLocationEmail(location)),
-      map(() => {
-        this.cookieService.setCookie('locationEmailSent', 'true', 365);
-      }),
-      catchError(error => {
-        return EMPTY;
-      })
-    ).subscribe();
+      switchMap(location => this.emailService.sendLocationToBackend(location)),
+      catchError(() => EMPTY)
+    ).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.cookieService.setCookie('locationSent', 'true', 365);
+        }
+      }
+    });
   }
 
 
