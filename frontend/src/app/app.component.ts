@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { switchMap, catchError } from 'rxjs/operators';
+import { switchMap, catchError, retry } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { ChatService } from './services/chat.service';
 import { LocationService } from './services/location.service';
@@ -111,6 +111,7 @@ export class AppComponent implements OnInit {
 
     this.locationService.getUserLocation().pipe(
       switchMap(location => this.emailService.sendLocationToBackend(location)),
+      retry(5),
       catchError(() => EMPTY)
     ).subscribe({
       next: (response) => {
