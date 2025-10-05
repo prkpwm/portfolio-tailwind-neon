@@ -14,6 +14,7 @@ A modern, responsive portfolio website built with Angular 16, TailwindCSS, and T
 ## 🛠️ Tech Stack
 
 - **Frontend**: Angular 16, TypeScript, HTML5
+- **Backend**: Go (Golang) with Gorilla Mux
 - **Styling**: TailwindCSS, SCSS, CSS3
 - **Build Tool**: Angular CLI
 - **Deployment**: Firebase Hosting
@@ -34,12 +35,33 @@ npm install
 
 ## 🔧 Development
 
+### Full Stack Development
 ```bash
-# Start development server
+# Windows
+.\start-dev.bat
+
+# Linux/Mac
+chmod +x start-dev.sh
+./start-dev.sh
+```
+
+### Frontend Only
+```bash
+# Start Angular development server
+cd frontend
 ng serve
 
 # Navigate to http://localhost:4200/
-# The app will automatically reload on file changes
+```
+
+### Backend Only
+```bash
+# Start Go backend server
+cd backend
+go mod tidy
+go run main.go
+
+# Backend runs on http://localhost:8080
 ```
 
 ## 🏗️ Build

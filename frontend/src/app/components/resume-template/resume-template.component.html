@@ -1,0 +1,71 @@
+<div class="resume-page">
+  <!-- Print Button -->
+  <div class="a4-container">
+    <!-- Header -->
+    <div class="header">
+      <h1 class="name">PAKPOOM SRISEN</h1>
+      <div class="contact-info">
+        <span>prkpwm.dev@gmail.com</span>
+        <span>•</span>
+        <span>(+66) 95-187-2661</span>
+        <span>•</span>
+        <span>Ratchathewi, Bangkok 10400</span>
+      </div>
+      <div class="links">
+        <span>github.com/prkpwm</span>
+        <span>•</span>
+        <span>linkedin.com/in/prkpwm</span>
+      </div>
+    </div>
+
+    <!-- Professional Summary -->
+    <div class="section">
+      <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+      <p class="summary-text">{{ getSummary() }}</p>
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="section">
+      <h2 class="section-title">TECHNICAL SKILLS</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3 class="skill-title">Programming Languages:</h3>
+          <p class="skill-list">{{ getSkillsList(topSkills) }}</p>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-title">Frameworks & Tools:</h3>
+          <p class="skill-list">{{ getSkillsList(topTools) }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+      <div *ngFor="let work of sortedWork" class="experience-item">
+        <div class="experience-header">
+          <div class="job-info">
+            <h3 class="job-title">{{ work.name }}</h3>
+            <p class="company">{{ work.description }}</p>
+          </div>
+          <div class="date">{{ work.data }}</div>
+        </div>
+        <p class="job-description">{{ work.full_description }}</p>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <h2 class="section-title">EDUCATION</h2>
+      <div *ngFor="let edu of sortedEducation" class="education-item">
+        <div class="education-header">
+          <div class="degree-info">
+            <h3 class="degree">{{ edu.name }}</h3>
+            <p class="school">{{ edu.description }}</p>
+          </div>
+          <div class="date">{{ edu.date }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

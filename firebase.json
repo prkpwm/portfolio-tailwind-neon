@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "resume-prkpwm",
-    "public": "dist/portfolio-angular-tailwind",
+    "public": "frontend/dist/portfolio-angular-tailwind",
     "ignore": [
       "firebase.json",
       "**/.*",

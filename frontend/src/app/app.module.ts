@@ -17,6 +17,7 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ResumeTemplateComponent } from './components/resume-template/resume-template.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FooterComponent } from './components/footer/footer.component';
     SkillsComponent,
     ChatComponent,
     NavigationComponent,
-    FooterComponent
+    FooterComponent,
+    ResumeTemplateComponent
   ],
   imports: [
     BrowserModule,

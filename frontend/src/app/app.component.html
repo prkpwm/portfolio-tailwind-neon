@@ -32,6 +32,7 @@
                   [mobileMenuOpen]="mobileMenuOpen"
                   [showLinksMenu]="showLinksMenu"
                   [mobileLinksOpen]="mobileLinksOpen"
+                  [showSuperButton]="showSuperButton"
                   (navigateToSection)="navigateToSection($event)"
                   (toggleMobileMenu)="toggleMobileMenu()"
                   (toggleLinksMenu)="toggleLinksMenu()"
@@ -40,6 +41,7 @@
                   (openResume)="openResume()"
                   (openGithub)="openGithub()"
                   (openLinkedin)="openLinkedin()"
+                  (resumeTemplateClick)="navigateToResumeTemplate()"
                   >
   </app-navigation>
 
@@ -90,6 +92,10 @@
               (userInputChange)="userInput = $event"
               (sendMessage)="sendMessage()">
     </app-chat>
+
+    <!-- Resume Section -->
+    <app-resume-template *ngIf="currentSection === 'resume-template'">
+    </app-resume-template>
     
   </main>
   
@@ -113,6 +119,35 @@
     <app-info-detail-modal [selectedInfo]="selectedInfo"
                            (closeModal)="closeInfoDetail()">
     </app-info-detail-modal>
+    
+    <!-- Super Token Authentication Modal -->
+    <div *ngIf="showSuperTokenModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[80]">
+      <div class="bg-gray-900 border border-red-500/30 rounded-xl p-8 max-w-md w-full mx-4 shadow-2xl">
+        <h3 class="text-2xl font-bold text-white mb-4 text-center">Super Access Required</h3>
+        <p class="text-gray-300 mb-6 text-center">Enter super token to access Resume A4</p>
+        <input 
+          [(ngModel)]="superToken"
+          (keyup.enter)="verifySuperToken()"
+          type="password" 
+          placeholder="Enter super token"
+          class="w-full bg-black/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-red-500 focus:outline-none mb-4">
+        <div *ngIf="superTokenError" class="text-red-400 text-sm mb-4 text-center">
+          {{ superTokenError }}
+        </div>
+        <div class="flex space-x-4">
+          <button 
+            (click)="verifySuperToken()"
+            class="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg transition-colors font-medium">
+            Access
+          </button>
+          <button 
+            (click)="closeSuperTokenModal()"
+            class="flex-1 bg-gray-700 hover:bg-gray-600 text-white py-3 rounded-lg transition-colors font-medium">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

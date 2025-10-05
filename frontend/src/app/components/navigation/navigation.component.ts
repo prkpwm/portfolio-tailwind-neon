@@ -10,6 +10,7 @@ export class NavigationComponent {
   @Input() mobileMenuOpen: boolean = false;
   @Input() mobileLinksOpen: boolean = false;
   @Input() showLinksMenu: boolean = false;
+  @Input() showSuperButton: boolean = false;
 
   @Output() navigateToSection = new EventEmitter<string>();
   @Output() toggleMobileMenu = new EventEmitter<void>();
@@ -19,6 +20,7 @@ export class NavigationComponent {
   @Output() openGithub = new EventEmitter<void>();
   @Output() openLinkedin = new EventEmitter<void>();
   @Output() closeMobileMenu = new EventEmitter<void>();
+  @Output() resumeTemplateClick = new EventEmitter<void>();
 
   onNavigateToSection(section: string) {
     this.closeMobileMenu.emit();
@@ -50,6 +52,11 @@ export class NavigationComponent {
   onOpenLinkedin() {
     this.showLinksMenu = false;
     this.openLinkedin.emit();
+  }
+
+  onResumeTemplateClick() {
+    this.closeMobileMenu.emit();
+    this.resumeTemplateClick.emit();
   }
 
   @HostListener('document:click', ['$event'])

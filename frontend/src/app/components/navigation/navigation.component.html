@@ -63,6 +63,13 @@
           <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/20 to-cyan-500/0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div *ngIf="currentSection === 'chat'" class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
         </button>
+        <button *ngIf="showSuperButton" (click)="onResumeTemplateClick()"
+                class="relative px-4 py-2 text-gray-300 hover:text-white transition-all duration-300 uppercase tracking-wider font-medium group"
+                [class.text-cyan-400]="currentSection === 'resume-template'">
+          <span class="relative z-10">Resume A4</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/20 to-cyan-500/0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div *ngIf="currentSection === 'resume-template'" class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
+        </button>
       </div>
       
       <!-- Mobile Menu Button -->
@@ -98,6 +105,9 @@
         <button (click)="onNavigateToSection('chat')" 
                 class="text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left px-3 py-2"
                 [class.text-cyan-400]="currentSection === 'chat'">Chat</button>
+        <button *ngIf="showSuperButton" (click)="onResumeTemplateClick()" 
+                class="text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-wider text-left px-3 py-2"
+                [class.text-cyan-400]="currentSection === 'resume-template'">Resume A4</button>
       </div>
     </div>
   </div>

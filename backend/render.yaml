@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: portfolio-backend
+    env: go
+    buildCommand: go build -o main
+    startCommand: ./main
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: SUPER_TOKEN
+        value: SUPER2024
+      - key: CORS_ORIGIN
+        value: https://resume-prkpwm.web.app

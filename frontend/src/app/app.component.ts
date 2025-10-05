@@ -5,6 +5,7 @@ import { ChatService } from './services/chat.service';
 import { LocationService } from './services/location.service';
 import { EmailService } from './services/email.service';
 import { CookieService } from './services/cookie.service';
+import { AuthService } from './services/auth.service';
 import { ChatMessage, Project, WorkExperience, Education, Skill, Question, Info } from './interfaces/portfolio.interface';
 import {
   _WORK_EXPERIENCE,
@@ -46,12 +47,25 @@ export class AppComponent implements OnInit {
   mouseX: number = 0;
   mouseY: number = 0;
   isOpenNewJob: boolean = false;
+  isSuperAuthenticated: boolean = false;
+  showSuperButton: boolean = false;
+  showSuperTokenModal: boolean = false;
+  superToken: string = '';
+  superTokenError: string = '';
 
-  constructor(private chatService: ChatService, private locationService: LocationService, private emailService: EmailService, private cookieService: CookieService) { }
+  constructor(private chatService: ChatService, private locationService: LocationService, private emailService: EmailService, private cookieService: CookieService, private authService: AuthService) { }
 
   ngOnInit() {
     this.addBotMessage('Hello! I\'m Pakpoom\'s AI assistant. Ask me anything about his experience, skills, or projects!');
     this.getLocationFromIP();
+    this.setupBackdoor();
+  }
+
+  private setupBackdoor() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('superadmin') === 'true') {
+      this.showSuperButton = true;
+    }
   }
 
   private getLocationFromIP() {
@@ -196,5 +210,37 @@ export class AppComponent implements OnInit {
 
   openLinkedin() {
     window.open('https://www.linkedin.com/in/prkpwm/', '_blank');
+  }
+
+  navigateToResumeTemplate() {
+    if (!this.isSuperAuthenticated) {
+      this.showSuperTokenModal = true;
+    } else {
+      this.navigateToSection('resume-template');
+    }
+  }
+
+  verifySuperToken() {
+    this.superTokenError = '';
+    this.authService.verifySuperToken(this.superToken).subscribe({
+      next: (response) => {
+        if (response.valid) {
+          this.isSuperAuthenticated = true;
+          this.showSuperTokenModal = false;
+          this.navigateToSection('resume-template');
+        } else {
+          this.superTokenError = 'Invalid token. Please try again.';
+        }
+      },
+      error: () => {
+        this.superTokenError = 'Connection error. Please try again.';
+      }
+    });
+  }
+
+  closeSuperTokenModal() {
+    this.showSuperTokenModal = false;
+    this.superToken = '';
+    this.superTokenError = '';
   }
 }

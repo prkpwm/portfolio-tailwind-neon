@@ -8,7 +8,7 @@ export interface Project {
   name: string;
   description: string;
   img: string;
-  data: string;
+  data?: string;
   order: number;
   items?: any[];
 }

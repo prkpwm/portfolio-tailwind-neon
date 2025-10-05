@@ -1,2 +1,2 @@
 #!/bin/bash
-ng build --configuration production && firebase deploy --only hosting
+cd frontend && ng build --configuration production && cd .. && firebase deploy --only hosting
