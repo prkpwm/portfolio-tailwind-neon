@@ -20,7 +20,7 @@ export const _PROGRAMS_LIST = [
         name: 'MongoDB',
         icon: 'code',
         img: _MAP_ASSETS['MongoDB'],
-        late: 6,
+        late: 8,
     },
 
 
