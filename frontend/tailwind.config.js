@@ -13,6 +13,7 @@ module.exports = {
       },
       fontFamily: {
         'cyber': ['Orbitron', 'monospace'],
+        'roboto': ['Roboto', 'sans-serif'],
       },
       animation: {
         'pulse-neon': 'pulse-neon 2s infinite',
