@@ -98,10 +98,8 @@ export class AppComponent implements OnInit {
     this.getLocationFromIP();
     this.setupBackdoor();
     
-    // Simulate loading time
-    setTimeout(() => {
-      this.isAppLoading = false;
-    }, 2000);
+    // Wait for all assets to load
+    this.waitForAssetsToLoad();
   }
 
   private setupBackdoor() {
@@ -284,5 +282,35 @@ export class AppComponent implements OnInit {
     this.showSuperTokenModal = false;
     this.superToken = '';
     this.superTokenError = '';
+  }
+
+  private waitForAssetsToLoad() {
+    if (document.readyState === 'complete') {
+      this.checkAllImagesLoaded();
+    } else {
+      window.addEventListener('load', () => {
+        this.checkAllImagesLoaded();
+      });
+    }
+  }
+
+  private checkAllImagesLoaded() {
+    const images = document.querySelectorAll('img');
+    const imagePromises = Array.from(images).map(img => {
+      if (img.complete) {
+        return Promise.resolve();
+      }
+      return new Promise((resolve) => {
+        img.onload = () => resolve(void 0);
+        img.onerror = () => resolve(void 0);
+      });
+    });
+
+    Promise.all(imagePromises).then(() => {
+      // Add minimum loading time for better UX
+      setTimeout(() => {
+        this.isAppLoading = false;
+      }, 1000);
+    });
   }
 }
