@@ -32,6 +32,7 @@ import { ProjectDetailModalComponent } from './components/modals/project-detail-
 import { EducationDetailModalComponent } from './components/modals/education-detail-modal/education-detail-modal.component';
 import { WorkDetailModalComponent } from './components/modals/work-detail-modal/work-detail-modal.component';
 import { InfoDetailModalComponent } from './components/modals/info-detail-modal/info-detail-modal.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @Component({
   selector: 'app-root',
@@ -52,7 +53,8 @@ import { InfoDetailModalComponent } from './components/modals/info-detail-modal/
     ProjectDetailModalComponent,
     EducationDetailModalComponent,
     WorkDetailModalComponent,
-    InfoDetailModalComponent
+    InfoDetailModalComponent,
+    LoadingComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -87,6 +89,7 @@ export class AppComponent implements OnInit {
   showSuperTokenModal: boolean = false;
   superToken: string = '';
   superTokenError: string = '';
+  isAppLoading: boolean = true;
 
   constructor(private chatService: ChatService, private locationService: LocationService, private emailService: EmailService, private cookieService: CookieService, private authService: AuthService) { }
 
@@ -94,6 +97,11 @@ export class AppComponent implements OnInit {
     this.addBotMessage('Hello! I\'m Pakpoom\'s AI assistant. Ask me anything about his experience, skills, or projects!');
     this.getLocationFromIP();
     this.setupBackdoor();
+    
+    // Simulate loading time
+    setTimeout(() => {
+      this.isAppLoading = false;
+    }, 2000);
   }
 
   private setupBackdoor() {

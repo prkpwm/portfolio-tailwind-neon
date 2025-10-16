@@ -1,4 +1,8 @@
-<div class="min-h-screen bg-black cyber-grid relative overflow-hidden" (mousemove)="onMouseMove($event)">
+<!-- Loading Screen -->
+<app-loading *ngIf="isAppLoading"></app-loading>
+
+<!-- Main App -->
+<div *ngIf="!isAppLoading" class="min-h-screen bg-black cyber-grid relative overflow-hidden" (mousemove)="onMouseMove($event)">
   <!-- 3D Movement Background -->
   <div class="fixed inset-0 pointer-events-none">
     <!-- Layer 1 - Far background -->
